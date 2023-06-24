@@ -1,0 +1,32 @@
+.postaction-svg{
+    height: 2rem;
+}
+
+.postaction-desc{
+    padding: 0 1rem;
+}
+
+.postaction-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(var(--color-light-text-2));
+    padding: 0 1rem; 
+}
+
+.postaction-like{
+    fill: currentColor;
+}
+
+.postaction-dislike, .postaction-dislike+.postaction-desc{
+    fill: red;
+    color: red;
+}
+
+.postaction-removebookmark, .postaction-removebookmark+.postaction-desc{
+    fill: green;
+}
+
+.postaction-addbookmark{
+    fill: currentColor;
+}

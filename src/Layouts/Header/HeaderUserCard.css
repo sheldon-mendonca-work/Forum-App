@@ -1,0 +1,42 @@
+@import url('../vars.css');
+
+.header-user-card{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+}
+
+.header-user-card-content{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem;
+    border-radius: 100rem;
+}
+
+.header-user-card-content:hover {
+    
+    background-color: rgba(var(--color-primary-light-hover-1));
+}
+
+.header-user-card-img > img{
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.header-user-card-name{
+    display: flex;
+    margin-left: 8px;
+    padding-right: 2rem;
+    flex-direction: column;
+}
+
+.header-user-card-displayName{
+    color: rgb(var(--color-light-text-1));
+    font-weight: 700;
+}
+
+.header-user-card-userName{
+    color: rgb(var(--color-light-text-2));
+}

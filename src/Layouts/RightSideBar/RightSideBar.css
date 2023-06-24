@@ -1,0 +1,65 @@
+@import url('../vars.css');
+
+.rightsidebar-content{
+    max-width: 35rem;
+    padding: 1rem;
+}
+
+.rightsidebar-box{
+    border: 1px solid #eee;
+    padding: 2rem;
+    max-height: 32rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.rightsidebar-box::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.rightsidebar-box::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+.rightsidebar-box::-webkit-scrollbar-thumb
+{
+	background-color: #777;
+}
+
+.rightsidebar-heading2{
+    font-size: 2rem;
+}
+
+.rightsidebar-subtext{
+    font-size: 1.3rem;
+    color: #777;
+}
+
+.rightsidebar-btn-div{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.rightsidebar-btn{
+    border: none;
+    font-size: 1.5rem;
+    font-style: inherit;
+    border: 1px solid rgb(var(--color-primary-light-hover-3));
+    padding: 1rem;
+    border-radius: 100rem;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.rightsidebar-btn:hover{
+    background-color: rgb(var(--color-primary-light-hover-3));
+}

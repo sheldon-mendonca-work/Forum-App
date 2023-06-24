@@ -1,0 +1,30 @@
+@import url('../vars.css');
+
+
+.boilerPlate{
+    display: grid;
+    grid-template-columns: minmax(max-content, 3fr) 60rem 3fr;
+}
+
+.header{
+    grid-column: 1/2;
+    grid-row: 1/-1;
+}
+
+.mainContent{
+    grid-column: 2/3;
+    grid-row: 1/-1;
+}
+
+.rightsidebar{
+    grid-column: 3/4;
+    grid-row: 1/-1;
+
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
