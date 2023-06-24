@@ -13,11 +13,18 @@ const HomePage = () => {
     const { forumList, sortPosts } = forumState;
     const { posts } = forumList;
     
+    const getPosts = () => {
+        let sendPosts = posts;
+        sendPosts = sortPosts ? sendPosts.sort((a,b) => (
+            (a.upvotes-a.downvotes) < ((b.upvotes-b.downvotes))
+            )) : sendPosts.sort((a,b) => (a.createdAt < b.createdAt));
+        return sendPosts;
+    }
     
     return <BoilerPlate>
         <h2>{sortPosts ? "Most Upvoted" : "Latest Posts"}</h2>
         {
-            posts.length > 0 && posts.map(post => (
+            posts.length > 0 && getPosts().map(post => (
                 <PostCard post={post} key={post.postId} />
             ))
         }

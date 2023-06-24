@@ -3,11 +3,14 @@ import PostActionBar from "../PostActionBar/PostActionBar";
 import './PostCard.css';
 import dayjs from "dayjs";
 import { DownvoteIcon, UpvoteIcon } from "../../Icons";
+import { useContext } from "react";
+import { ForumContext } from "../../../contexts/ForumContext";
 
 var relativeTime = require('dayjs/plugin/relativeTime');
 
 const PostCard = (props) => {
     const { post } = props;
+    const { dispatchForum } = useContext(ForumContext);
     // console.log(post);
 
     const navigate = useNavigate();
@@ -21,21 +24,21 @@ const PostCard = (props) => {
 
     const upvoteHandler = (event) => {
         event.stopPropagation();
-        dispatchEvent({type: 'UPVOTE_POST', value: post.postId});
+        dispatchForum({type: 'UPVOTE_POST', value: post.postId});
     }
 
     const downvoteHandler = (event) => {
         event.stopPropagation();
-        dispatchEvent({type: 'DOWNVOTE_POST', value: post.postId});
+        dispatchForum({type: 'DOWNVOTE_POST', value: post.postId});
     }
     
-    return <div className="postcard" onClick={postClickHandler}>
+    return <div className="postcard" >
         <div className="postcard-upvotediv" style={{cursor:"pointer"}} >
-            <span><UpvoteIcon className="voted-icon" onClick={upvoteHandler}/></span>
+            <span onClick={upvoteHandler}><UpvoteIcon className="voted-icon" /></span>
             <span>{post.upvotes-post.downvotes}</span>
-            <span><DownvoteIcon className="voted-icon" onClick={downvoteHandler}/></span>
+            <span onClick={downvoteHandler}><DownvoteIcon className="voted-icon" /></span>
         </div>
-        <div className="postcard-userdetails">
+        <div className="postcard-userdetails" onClick={postClickHandler}>
             <div className="postcard-imgdiv" style={{cursor:"pointer"}} >
                 <img src={post.picUrl} alt={post.name} className="postcard-img" />
             </div>
@@ -46,11 +49,11 @@ const PostCard = (props) => {
                 <span className="postcard-time">{dayjs(post.createdAt).fromNow()}</span>
             </div>
         </div>
-        <div className="postcard-postTitle">{post.post}</div>
-        <div className="postcard-postTags">
+        <div className="postcard-postTitle" onClick={postClickHandler}>{post.post}</div>
+        <div className="postcard-postTags" onClick={postClickHandler}>
             {post.tags.map((tag, index) => <span className="postcard-postTag" key={index}>{tag}</span>)}
             </div>
-        <div className="postcard-userpost">
+        <div className="postcard-userpost" onClick={postClickHandler}>
             <div className="postcard-postDec">{post.postDescription}</div>
                         
         </div>

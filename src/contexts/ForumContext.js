@@ -19,12 +19,30 @@ const forumReducer = ( prevState, {type, value} ) => {
 
         case 'SET_FORUM_LIST':
             return {...prevState, forumList: value};
+        
+        case 'SORT_BY UPVOTES':
+            return {...prevState, sortPosts: true};
+
+        case 'SORT_BY DATE':
+            return {...prevState, sortPosts: false};
 
         case 'UPVOTE_POST':
-            return {...prevState, forumList: prevState.forumList.find(({postId}) => postId === value).upvotes++};
+            
+            const oldForumList = prevState.forumList.posts;
+            oldForumList.find(({postId}) => postId === value).upvotes++;
+            return {...prevState, forumList: {...prevState.forumList, posts: oldForumList}};
 
         case 'DOWNVOTE_POST':
-            return {...prevState, forumList: prevState.forumList.find(({postId}) => postId === value).downvotes++};
+            const oldForumList2 = prevState.forumList.posts;
+            oldForumList2.find(({postId}) => postId === value).downvotes++;
+            
+            return {...prevState, forumList: {...prevState.forumList, posts: oldForumList2}};
+
+        case 'BOOKMARK_POST':
+            const oldForumList3 = prevState.forumList.posts;
+            oldForumList3.find(({postId}) => postId === value).isBookmarked = !(oldForumList3.find(({postId}) => postId === value).isBookmarked);
+            
+            return {...prevState, forumList: {...prevState.forumList, posts: oldForumList3}};
 
         default:
             return prevState;
